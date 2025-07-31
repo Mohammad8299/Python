@@ -374,4 +374,53 @@ print(set1)#-->>>>{3, 21}
 
 ##############################################################################################################
 
+#Dictionary
+
+myCar = {
+    'name' : 'samand',
+    'color' : 'white' ,
+    'year' : 1400
+    #key : value
+}
+print(myCar)#-->>>>{'name': 'samand', 'color': 'white', 'year': 1400}
+
+myCar ['year'] = 1399
+print(myCar)#-->>>>{'name': 'samand', 'color': 'white', 'year': 1399}
+
+myCar.update({'company' : 'ir'})
+print(myCar)#-->>>>{'name': 'samand', 'color': 'white', 'year': 1399, 'company': 'ir'}
+
+#dictionary is structure in other language
+
+myStudents = {
+    'student1' : {
+        'name' : 'mohammad' ,
+        'id' : 1025
+    },
+    'student2': {
+        'name' : 'kourosh' ,
+        'id' : 1120
+    }
+}
+print(myStudents)#-->>>>{'student1': {'name': 'mohammad', 'id': 1025}, 'student2': {'name': 'kourosh', 'id': 1120}}
+
+##############################################################################################################
+
+#Dondition
+
+x33=65
+x34=65
+
+if x33 > x34:
+    print("x33 greater")
+elif x34 > x33:
+    print("x34 greater")
+else:
+    print("x34 == x33")
+
+#-->>>>x34 == x33
+
+print('a > b') if x33 > x34 else print('a <= b')#-->>>>a <= b
+
+
 
