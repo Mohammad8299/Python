@@ -406,7 +406,7 @@ print(myStudents)#-->>>>{'student1': {'name': 'mohammad', 'id': 1025}, 'student2
 
 ##############################################################################################################
 
-#Dondition
+#Condition
 
 x33=65
 x34=65
@@ -422,5 +422,60 @@ else:
 
 print('a > b') if x33 > x34 else print('a <= b')#-->>>>a <= b
 
+##############################################################################################################
 
+#Loops
+
+i = 1
+
+while i < 8 :
+    print(i)#-->>>>1 2 3 4 5
+    if i == 5:
+        break
+    i+= 1
+
+i = 1
+
+while i < 5 :
+    i += 1
+    if i == 3:
+        continue
+    print(i)#-->>>>2 4 5
+
+string1 = 'microlearn'
+
+for char in string1 :
+    print(char)#-->>>>m i  c r o l e a r n
+
+for i in range(1,120,40):
+    print(i)#-->>>>1 41 81
+
+##############################################################################################################
+
+#Function
+
+def name():
+    print('hi every one')
+name()#-->>>>hi every one
+
+def mean(score1,score2):
+    return (score1+score2) / 2
+print(mean(12,45))#-->>>>28.5
+
+def power(x,n):
+    result = 1 
+    for item in range(n) :
+        result *= x
+    return result
+print(power(2,10))#-->>>>1024
+
+def power_recursion(x,n):
+    if n > 0:
+        result = x * power_recursion(x,n-1)
+        return result
+    elif n == 0 :
+        return 1
+print(power_recursion(2,10))#-->>>>1024
+
+##############################################################################################################
 
