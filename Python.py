@@ -245,3 +245,133 @@ l = len(str1)
 print(str1[l-1])#-->>>>d
 print(str1[1:3])#-->>>>oh
 print(str1[-4:-2])#-->>>>am
+
+##############################################################################################################
+
+#List
+
+list2 = [1 , 2 , 'hello' , ['3', "5"]]
+print(list2)#-->>>>[1, 2, 'hello', ['3', '5']]
+
+list2[2] ="mohammad"
+print(list2)#-->>>>[1, 2, 'mohammad', ['3', '5']]
+print(len(list2))#-->>>>4
+
+list3=list((1,2,"a"))
+print (list3)#-->>>>[1, 2, 'a']
+
+list2[3][1] = 33
+print(list2)#-->>>>[1, 2, 'mohammad', ['3', 33]]
+
+list2.insert(2,"micro")
+print(list2)#-->>>>[1, 2, 'micro', 'mohammad', ['3', 33]]
+
+list2.append("world")
+print(list2)#-->>>>[1, 2, 'micro', 'mohammad', ['3', 33], 'world']
+
+##############################################################################################################
+
+list4 = [100,4001,23]
+list2.extend(list4)
+print(list2)#-->>>>[1, 2, 'micro', 'mohammad', ['3', 33], 'world', 100, 4001, 23]
+
+list2.remove(1)
+print(list2)#-->>>>[2, 'micro', 'mohammad', ['3', 33], 'world', 100, 4001, 23]
+
+list2.pop()
+print(list2)#-->>>>[2, 'micro', 'mohammad', ['3', 33], 'world', 100, 4001]
+
+del list2[2]
+print(list2)#-->>>>[2, 'micro', ['3', 33], 'world', 100, 4001]
+
+list2.clear()
+print(list2)#-->>>>[]
+
+list5=[15,4,34,7]
+list5.sort()
+print(list5)#-->>>>[4, 7, 15, 34]
+
+list5.sort(reverse=True)
+print(list5)#-->>>>[34, 15, 7, 4]
+
+##############################################################################################################
+
+#sort use for alphabet.
+
+def myFunct(n):
+    return abs(n - 10)
+
+list6=[56,54,21,87,49,34]
+list6.sort(key = myFunct)
+print(list6)#-->>>>[21, 34, 49, 54, 56, 87]
+
+def myFunct3(n):
+    return abs(n - 10)
+
+list7=['Z','v','h','G','M','a']
+list7.sort(key = str.lower)
+print(list7)#-->>>>['a', 'G', 'h', 'M', 'v', 'Z']
+
+##############################################################################################################
+
+list8 = [1,2,3,4]
+list9=list8.copy() #====== list9 = list(list8)
+print(list9)#-->>>>[1, 2, 3, 4]
+
+list8[2] = 10
+print(list9)#-->>>>[1, 2, 3, 4]
+
+myList = ['11111','34',"25" , '987']
+newList = [item for item in myList if '1' in item]
+print(newList)#-->>>>['1111']
+
+##############################################################################################################
+
+#Tuple
+
+#Tuple is unchangable
+
+myTuple = (100 , 'apple', True,123)
+myTuple2=(1)
+myTuple3=(1,)
+
+print(type(myTuple2))#-->>>><class 'int'>
+print(type(myTuple3))#-->>>><class 'tuple'>
+
+mylist2 = list(myTuple)
+mylist2[0] = 500
+myTuple = tuple(mylist2)
+print(myTuple)#-->>>>(500, 'apple', True, 123)
+
+(*a,b,c) = myTuple
+print(a,b,c)#-->>>>[500, 'apple'] True 123
+
+##############################################################################################################
+
+#Sets
+
+set1={1,2,'a',True}
+print(set1)#unavailable to sets wwith index because sets hasn't index #-->>>>{1, 'a', 2}
+
+set2={1,21,1,1,1,1,3}
+print(set2)#-->>>>{1, 3, 21}
+print(type(set2))#-->>>><class 'set'>
+
+set2.add(128)
+print(set2) # in sets haven't sort #-->>>>{128, 1, 3, 21}
+
+set2.remove(128)
+print(set2)#-->>>>{1, 3, 21}
+
+set3 = set1.union(set2)
+print(set3)#-->>>>{1, 2, 3, 21, 'a'}
+
+set1.intersection_update(set2)
+print(set1)#-->>>>{1}
+
+set1.symmetric_difference_update(set2)
+print(set1)#-->>>>{3, 21}
+
+##############################################################################################################
+
+
