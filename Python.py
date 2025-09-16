@@ -2,6 +2,7 @@
 
 import random
 
+
 print ('hello world') #-->>>>hello world
 
 x = 6
@@ -479,3 +480,102 @@ print(power_recursion(2,10))#-->>>>1024
 
 ##############################################################################################################
 
+#Advanced Python
+
+#we can use mysql with pyton for database
+
+#Generator
+
+def firstn():# yeild like return
+    yield 1
+    yield 2
+    yield 3
+
+for i in firstn():
+    print(i) #-->>>> 1 2 3 
+
+#yeild  returns our outputs one by one, unlike return in function.
+# means yeild return us : 1 and go to the for loop and 2 go to the for loop and 3 go to the for loop.
+
+#tips for debuging python in vs code : next or near of number line , you click and see red cicrle , and clicl F5 and line to line click F11 for debuging
+
+#Lambda
+
+x35 = lambda x:x + 5
+print(x35(4))#-->>>> 9
+lists = [2,4,6]
+def myfunc (n):
+    return n * 2
+
+#Map
+
+newList2 = map(lambda x : x * 2,lists)
+print(list(newList2))#-->>>>[4, 8, 12]
+
+newList3 = filter(lambda x: True if x > 3 else False , lists)
+print(list(newList3))#-->>>>[4, 6]
+
+##############################################################################################################
+
+#Oop
+
+class myclass:
+    x =13 
+myObject = myclass()
+print(myObject.x)#-->>>>13
+class circle :
+    def readRadius (self):#self is a variable
+        self.radius = int(input("Enter radius : "))#  12<<----
+    def calculate(self):
+        self.area = 3.14 * self.radius ** 2
+    def display(self):
+        print('Radius : ' , self.radius , 'Area' , self.area)#-->>>>Radius :  58 Area 10562.960000000001
+myCircle = circle()
+myCircle.readRadius()
+myCircle.calculate()
+myCircle.display()
+
+class rectangle :
+    def __init__(self,l,w):#init==initialization
+        self.length =1 
+        self.width = 2
+    def calculatering(self):
+        self.area=self.length*self.width
+    def display(self):
+        print('Area: ',self.area)#-->>>2
+rect = rectangle(12,7) # for init
+rect.calculatering()
+rect.display()
+
+#inheritance
+class Animal:
+    def __init__(self, name):
+        self.name = name
+    
+    def make_sound(self):
+        return "Generic animal sound"
+
+class Dog(Animal):
+    def make_sound(self):
+        return "Woof woof!"
+    
+    def chase_tail(self):
+        return f"{self.name} is chasing its tail!"
+
+class Cat(Animal):
+    def make_sound(self):
+        return "Meow!"
+    
+    def scratch_furniture(self):
+        return f"{self.name} is scratching the furniture!"
+
+dog1 = Dog("Rex")
+cat1 = Cat("Whiskers")
+
+print(dog1.make_sound())#-->>>>Woof woof!
+print(dog1.chase_tail())#-->>>>Rex is chasing its tail!
+
+print(cat1.make_sound())#-->>>>Meow!
+print(cat1.scratch_furniture())#-->>>>Whiskers is scratching the furniture!
+
+#IOT = Internet Object Or Internet Things
