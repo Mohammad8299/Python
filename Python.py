@@ -1,3 +1,6 @@
+import Training2 as TR
+TR.Mymodul("mohammad")
+
 #Beginers
 
 import random
@@ -579,3 +582,249 @@ print(cat1.make_sound())#-->>>>Meow!
 print(cat1.scratch_furniture())#-->>>>Whiskers is scratching the furniture!
 
 #IOT = Internet Object Or Internet Things
+
+##############################################################################################################
+
+#Modul
+
+#we can create a new file by name is  : Training2 and save codes of about this moduls
+#from use element special in moduls we must :
+
+#from Training2 import variable_name
+
+#we can use moduls standards in python :
+import sys
+sys.path.append(r'address : c:/users/ea/da/da/')
+
+#from Training2 import * : means import all elements 
+
+#File
+
+file = open('readme.txt') #or file = open ('address : c:/users/ea/da/da/')
+#file = open('address.txt' , 'r') , r means just read
+#file = open('address.txt' , 'a') , a means append and push in end codes 
+#file = open('address1.txt' , 'a' or 'w' or 'x') , address1.text isn't file and this commond means create address1.text and w means write
+#file = open('address.txt' , 'xt' or 'xb') , t means text and b means binary
+
+print (file.read())#print (file.read(10)) means 10 first char just read 
+#for item in file.read():{print(item)} is Read it one by one char
+#for item in file.readline():{print(item)} is read first line one by one char
+# if again this : for item in file.readline():{print(item)}  is read seccond line one by one char
+#file.close() : for memory
+#file.write('this is new text') # push in end of readme.txt #file = open('address1.txt' ,'w') # delete data and write this is new text
+file = open('readme.txt')
+print (file.read())
+
+import os
+#os.rename("readme.txt" , "readme2.txt") # change name file
+#os.remove("readme.txt") # remove file
+
+import pandas as pd#Main use: Managing and processing structured data (such as tables) or chart data
+import numpy as np#Main use: Numerical calculations and working with multidimensional arrays
+import matplotlib.pyplot as plt#Main use: drawing diagrams and images
+from sklearn.impute import SimpleImputer#Main use: replacing missing values (not used in this code but commonly used for this purpose)
+
+# Create a sample dataset with missing values
+
+data = {
+    'Age': [25, 30, np.nan, 35, 40, np.nan, 45, 50, 55, np.nan],
+    'Income': [50000, np.nan, 70000, np.nan, 90000, 100000, 110000, np.nan, 130000, 140000],
+    'Score': [3.5, 4.0, np.nan, 4.5, np.nan, 5.0, 5.5, 6.0, np.nan, 6.5]
+}
+#or your use exel : excel_path = "address:C:/User/.../.../abc.xlsx"
+#df = pd.read_excel(excel_path)
+df = pd.DataFrame(data)
+
+print("Original dataset with missing values:")
+print(df)
+
+#-->>>>Original dataset with missing values:
+#    Age    Income  Score
+#0  25.0   50000.0    3.5
+#1  30.0       NaN    4.0
+#2   NaN   70000.0    NaN
+#3  35.0       NaN    4.5
+#4  40.0   90000.0    NaN
+#5   NaN  100000.0    5.0
+#6  45.0  110000.0    5.5
+#7  50.0       NaN    6.0
+#8  55.0  130000.0    NaN
+#9   NaN  140000.0    6.5
+
+# Calculate statistical measures before processing
+print("\nStatistical measures before processing:")
+print(df.describe())
+
+#-->>>>Statistical measures before processing:
+#             Age         Income     Score
+#count   7.000000       7.000000  7.000000
+#mean   40.000000   98571.428571  5.000000
+#std    10.801234   31847.852585  1.080123
+#min    25.000000   50000.000000  3.500000
+#25%    32.500000   80000.000000  4.250000
+#50%    40.000000  100000.000000  5.000000
+#75%    47.500000  120000.000000  5.750000
+#max    55.000000  140000.000000  6.500000
+
+# Show count of missing values in each column
+print("\nCount of missing values in each column:")
+print(df.isnull().sum())
+
+# Method 1: Dropping records with missing values
+df_dropped = df.dropna()
+
+# Calculate statistical measures after dropping records
+print("\nStatistical measures after dropping records with missing values:")
+print(df_dropped.describe())
+
+#-->>>>Statistical measures after dropping records with missing values:
+#             Age         Income     Score
+#count   2.000000       2.000000  2.000000
+#mean   35.000000   80000.000000  4.500000
+#std    14.142136   42426.406871  1.414214
+#min    25.000000   50000.000000  3.500000
+#25%    30.000000   65000.000000  4.000000
+#50%    35.000000   80000.000000  4.500000
+#75%    40.000000   95000.000000  5.000000
+#max    45.000000  110000.000000  5.500000
+
+# Method 2: Filling missing values with different approaches
+# a) Filling with mean
+df_mean = df.fillna(df.mean())
+
+# b) Filling with median
+df_median = df.fillna(df.median())
+
+# c) Filling with mode (not typically used for numerical data)
+
+# d) Filling with random normal distribution (mean + std)
+def fill_with_random_normal(series):
+    mean = series.mean()
+    std = series.std()
+    null_indices = series.isnull()
+    series.loc[null_indices] = np.random.normal(mean, std, size=null_indices.sum())
+    return series
+
+df_std = df.apply(fill_with_random_normal, axis=0)
+
+# Display results from different filling methods
+print("\nSample of mean imputation:")
+print(df_mean.head())
+
+#-->>>>Sample of mean imputation:
+#    Age        Income  Score
+#0  25.0  50000.000000    3.5
+#1  30.0  98571.428571    4.0
+#2  40.0  70000.000000    5.0
+#3  35.0  98571.428571    4.5
+#4  40.0  90000.000000    5.0
+
+
+
+
+
+
+
+
+
+
+print("\nSample of median imputation:")
+print(df_median.head())
+
+#-->>>>Sample of median imputation:
+#    Age    Income  Score
+#0  25.0   50000.0    3.5
+#1  30.0  100000.0    4.0
+#2  40.0   70000.0    5.0
+#3  35.0  100000.0    4.5
+#4  40.0   90000.0    5.0
+
+print("\nSample of normal distribution imputation:")
+print(df_std.head())
+
+#-->>>>Sample of normal distribution imputation:
+#         Age        Income     Score
+#0  25.000000  50000.000000  3.500000
+#1  30.000000  81541.783304  4.000000
+#2  39.976863  70000.000000  3.589551
+#3  35.000000  82407.531279  4.500000
+#4  40.000000  90000.000000  5.205863
+
+# Calculate statistical measures for each imputation method
+print("\nStatistical measures after mean imputation:")
+print(df_mean.describe())
+
+#-->>>>Statistical measures after mean imputation:
+#             Age         Income      Score
+#count  10.000000      10.000000  10.000000
+#mean   40.000000   98571.428571   5.000000
+#std     8.819171   26003.662746   0.881917
+#min    25.000000   50000.000000   3.500000
+#25%    36.250000   92142.857143   4.625000
+#50%    40.000000   98571.428571   5.000000
+#75%    43.750000  107500.000000   5.375000
+#max    55.000000  140000.000000   6.500000
+
+print("\nStatistical measures after median imputation:")
+print(df_median.describe())
+
+#-->>>>Statistical measures after median imputation:
+#             Age         Income      Score
+#count  10.000000      10.000000  10.000000
+#mean   40.000000   99000.000000   5.000000
+#std     8.819171   26012.817354   0.881917
+#min    25.000000   50000.000000   3.500000
+#25%    36.250000   92500.000000   4.625000
+#50%    40.000000  100000.000000   5.000000
+#75%    43.750000  107500.000000   5.375000
+#max    55.000000  140000.000000   6.500000
+
+print("\nStatistical measures after normal distribution imputation:")
+print(df_std.describe())
+
+#-->>>>Statistical measures after normal distribution imputation:
+#             Age         Income      Score
+#count  10.000000      10.000000  10.000000
+#mean   41.636456   98599.220203   4.951886
+#std     9.721002   29358.560203   1.029130
+#min    25.000000   50000.000000   3.500000
+#25%    36.244216   81758.220298   4.125000
+#50%    41.779007   95000.000000   5.102931
+#75%    48.750000  125000.000000   5.667586
+#max    55.000000  140000.000000   6.500000
+
+# Plotting to compare distributions before and after processing
+plt.figure(figsize=(15, 10))
+
+# Age distribution comparison
+plt.subplot(2, 2, 1)
+df['Age'].plot(kind='kde', label='Original', color='red')
+df_mean['Age'].plot(kind='kde', label='Mean Imputation', color='blue')
+df_median['Age'].plot(kind='kde', label='Median Imputation', color='green')
+df_std['Age'].plot(kind='kde', label='Normal Dist Imputation', color='purple')
+plt.title('Age Distribution Before/After Processing')
+plt.legend()
+
+# Income distribution comparison
+plt.subplot(2, 2, 2)
+df['Income'].plot(kind='kde', label='Original', color='red')
+df_mean['Income'].plot(kind='kde', label='Mean Imputation', color='blue')
+df_median['Income'].plot(kind='kde', label='Median Imputation', color='green')
+df_std['Income'].plot(kind='kde', label='Normal Dist Imputation', color='purple')
+plt.title('Income Distribution Before/After Processing')
+plt.legend()
+
+# Score distribution comparison
+plt.subplot(2, 2, 3)
+df['Score'].plot(kind='kde', label='Original', color='red')
+df_mean['Score'].plot(kind='kde', label='Mean Imputation', color='blue')
+df_median['Score'].plot(kind='kde', label='Median Imputation', color='green')
+df_std['Score'].plot(kind='kde', label='Normal Dist Imputation', color='purple')
+plt.title('Score Distribution Before/After Processing')
+plt.legend()
+
+plt.tight_layout()
+plt.show()
+
+
+#-->>>> The all codes with plt show the table
