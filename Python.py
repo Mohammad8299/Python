@@ -598,6 +598,8 @@ sys.path.append(r'address : c:/users/ea/da/da/')
 
 #from Training2 import * : means import all elements 
 
+##############################################################################################################
+
 #File
 
 file = open('readme.txt') #or file = open ('address : c:/users/ea/da/da/')
@@ -719,15 +721,6 @@ print(df_mean.head())
 #3  35.0  98571.428571    4.5
 #4  40.0  90000.000000    5.0
 
-
-
-
-
-
-
-
-
-
 print("\nSample of median imputation:")
 print(df_median.head())
 
@@ -828,3 +821,11 @@ plt.show()
 
 
 #-->>>> The all codes with plt show the table
+
+##############################################################################################################
+
+#refrence :
+
+#jadi mirmirani , maktabkhoneh , youtube ---- microlearn ehsan abdollahi
+
+#Robot in telegram with microlearn ehsan andollahi
